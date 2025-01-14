@@ -1,0 +1,17 @@
+Configurando sua aplicação como página principal do webservice apache2.
+
+sudo nano /etc/apache2/sites-available/000-default.conf
+
+<VirtualHost *:80>
+ ServerAdmin webmaster@localhost
+ DocumentRoot /var/www/html/phpipam/
+ <Directory /var/www/html/phpipam/>
+ Options Indexes FollowSymLinks
+ AllowOverride All
+ Require all granted
+ </Directory>
+ ErrorLog ${APACHE_LOG_DIR}/error.log
+ CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+sudo systemctl restart apache2
